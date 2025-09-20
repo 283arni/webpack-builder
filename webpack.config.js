@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
 
 module.exports = {
   mode: 'development', // Development or Production режим
@@ -30,7 +31,7 @@ module.exports = {
       },
       // Определяем правило для загрузки изображений
       {
-        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        test: /\.(png|jpg|jpeg|gif)$/i,
         type: 'asset/resource',
         generator: {
           filename: 'images/[name][ext][query]'
@@ -40,7 +41,21 @@ module.exports = {
       {
         test: /\\.(woff|woff2|eot|ttf|otf)$/i,
         type: 'asset/resource'
-      }
+      },
+      {
+        test: /\.svg$/,
+        use: [
+          {
+            loader: 'svg-sprite-loader',
+            options: {
+              // Options for svg-sprite-loader
+              // For example, to extract the sprite into a separate file:
+              extract: true,
+              spriteFilename: 'sprite.svg', // Name of the generated sprite file
+            },
+          },
+        ],
+      },
     ]
   },
     stats: {
@@ -56,10 +71,11 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: './style.css'
     }),
+    new SpriteLoaderPlugin()
   ],
   devServer: {
     static: './dist', // Где лежит рабочий сайт
-    open: true, // Открывать автоматически браузер
+    open: true, // Открывать овтоматически браузеавр
     hot: true // Горячая перегрузка
   }
 };
