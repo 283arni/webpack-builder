@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "target": "esnext", // Целевая спецификация JavaScript
+    "module": "esnext", // Модульная система (используется ES-модули)
+    "moduleResolution": "node", // Разрешение модулей по стандарту Node.js
+    "esModuleInterop": true, // Совместимость с CommonJS модулями
+    "forceConsistentCasingInFileNames": true, // Контроль регистрозависимых путей
+    "strict": true, // Включение строгого режима
+    "noImplicitReturns": true, // Требовать явный возврат значений функций
+    "noFallthroughCasesInSwitch": true, // Предупреждать о пропущенных break в switch-case
+    "noUnusedLocals": true, // Отмечать неиспользованные локальные переменные
+    "noUnusedParameters": true, // Отмечать неиспользованные параметры функций
+    "resolveJsonModule": true, // Возможность импорта json-файлов
+    "skipLibCheck": true, // Пропустить проверку типов библиотечных деклараций
+    "sourceMap": true, // Генерировать source maps для дебага
+    "outDir": "./dist", // Директория для компиляции
+    "rootDir": "./src", // Исходная директория
+    "jsx": "preserve", // Оставлять jsx элементы без трансформации
+    "allowJs": true, // Разрешать смешивать TypeScript и JavaScript файлы
+    "checkJs": false, // Не проверять типы в JavaScript файлах
+    "declaration": false, // Не генерировать декларации d.ts
+    "emitDeclarationOnly": false, // Не генерировать только объявления
+    "incremental": true, // Использовать инкрементальную компиляцию
+    "experimentalDecorators": true, // Включить экспериментальные декораторы
+    "allowSyntheticDefaultImports": true // Позволять синтетический экспорт по умолчанию
+  },
+  "include": ["src"], // Включённые директории
+  "exclude": ["node_modules"] // Исключённые директории
+}
