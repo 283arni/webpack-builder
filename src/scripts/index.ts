@@ -1,13 +1,13 @@
 // стили
-import './style.scss'
+import '../styles/main.scss'
 
 // ресурсные файлы
-import './assets/paths/fonts'
-import './assets/paths/icons'
-import './assets/paths/images'
+import '../assets/paths/fonts'
+import '../assets/paths/icons'
+import '../assets/paths/images'
 
 // скрипты
-import './scripts/console'
+import './console'
 
 
 console.log('Hello from TypeScript!');

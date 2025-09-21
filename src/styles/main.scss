@@ -1,0 +1,7 @@
+// основные стили
+@use './fonts.scss';
+@use './normalize.scss';
+@use './common.scss';
+
+// компоненты
+@use '../components/List/List.scss';

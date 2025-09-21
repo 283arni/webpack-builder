@@ -12,9 +12,9 @@ const PAGES = fs.readdirSync(PAGES_DIR).filter(fileName => fileName.endsWith('.p
 module.exports = {
   mode: 'development', // Development or Production режим
   devtool: 'inline-source-map', // Включаем отображение Source Map
-  entry: './src/index.ts', // Точка входа
+  entry: './src/scripts/index.ts', // Точка входа
   output: {
-    filename: 'bundle.js', // Выходной файл
+    filename: 'scripts/main.js', // Выходной файл
     path: path.resolve(__dirname, 'dist'), // Куда выводить собранные файлы
     clean: true,
   },
@@ -30,6 +30,9 @@ module.exports = {
       {
         test: /\.pug$/,
         loader: 'pug-loader',
+        options: {
+          pretty: true,
+        }
       },
       // Правило для SCSS и CSS
       {
@@ -75,21 +78,19 @@ module.exports = {
     extensions: ['.ts', '.js']
   },
   plugins: [
-    new HtmlWebpackPlugin({
-      template: './src/index.pug', // Использовать Pug в качестве шаблона
-    }),
     ...PAGES.map(page => new HtmlWebpackPlugin({
+      minify: false,
       template: `${PAGES_DIR}/${page}`,
-      filename: `./pages/${page.replace(/\.pug/,'.html')}`
+      filename: `./pages/${page.replace(/\.pug/,'.html')}`,
     })),
     new MiniCssExtractPlugin({
-      filename: './style.css'
+      filename: 'styles/main.css'
     }),
     new SpriteLoaderPlugin()
   ],
   devServer: {
     static: './dist', // Где лежит рабочий сайт
-    open: true, // Открывать овтоматически браузеавр
+    open: ['/pages/index.html'], // Открывать овтоматически браузеавр
     hot: true, // Горячая перегрузка
     watchFiles: ['src/**/*', 'public/**/*'],
   }
