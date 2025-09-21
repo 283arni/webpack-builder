@@ -1,7 +1,14 @@
+// стили
 import './style.scss'
 
-import './assets/scripts/icons'
-import './assets/scripts/images'
+// ресурсные файлы
+import './assets/paths/fonts'
+import './assets/paths/icons'
+import './assets/paths/images'
+
+// скрипты
+import './scripts/console'
+
 
 console.log('Hello from TypeScript!');
-document.body.innerHTML += '<h1>Welcome to the Website!</h1>';
+document.body.innerHTML += '<h1>Welcome to the dfsfsdf Website!</h1>';

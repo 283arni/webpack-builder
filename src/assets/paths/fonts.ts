@@ -1,0 +1,8 @@
+import '../fonts/OpenSans-Bold.woff'
+import '../fonts/OpenSans-Bold.woff2'
+import '../fonts/OpenSans-Light.woff'
+import '../fonts/OpenSans-Light.woff2'
+import '../fonts/OpenSans-Medium.woff'
+import '../fonts/OpenSans-Medium.woff2'
+import '../fonts/OpenSans-Regular.woff'
+import '../fonts/OpenSans-Regular.woff2'

@@ -1,7 +1,13 @@
 const path = require('path');
+const fs = require('fs');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
+
+
+
+const PAGES_DIR = `./src/pages/`;
+const PAGES = fs.readdirSync(PAGES_DIR).filter(fileName => fileName.endsWith('.pug'));
 
 module.exports = {
   mode: 'development', // Development or Production режим
@@ -10,6 +16,7 @@ module.exports = {
   output: {
     filename: 'bundle.js', // Выходной файл
     path: path.resolve(__dirname, 'dist'), // Куда выводить собранные файлы
+    clean: true,
   },
   module: {
     rules: [
@@ -39,8 +46,11 @@ module.exports = {
       },
       // Подключаем шрифтовые файлы
       {
-        test: /\\.(woff|woff2|eot|ttf|otf)$/i,
-        type: 'asset/resource'
+        test: /\.(woff|woff2|eot|ttf|otf)$/i,
+        type: 'asset/resource',
+        generator: {
+          filename: 'fonts/[name][ext][query]'
+        }
       },
       {
         test: /\.svg$/,
@@ -68,6 +78,10 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './src/index.pug', // Использовать Pug в качестве шаблона
     }),
+    ...PAGES.map(page => new HtmlWebpackPlugin({
+      template: `${PAGES_DIR}/${page}`,
+      filename: `./pages/${page.replace(/\.pug/,'.html')}`
+    })),
     new MiniCssExtractPlugin({
       filename: './style.css'
     }),
@@ -76,6 +90,7 @@ module.exports = {
   devServer: {
     static: './dist', // Где лежит рабочий сайт
     open: true, // Открывать овтоматически браузеавр
-    hot: true // Горячая перегрузка
+    hot: true, // Горячая перегрузка
+    watchFiles: ['src/**/*', 'public/**/*'],
   }
 };
