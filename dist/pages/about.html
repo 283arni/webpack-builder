@@ -6,6 +6,37 @@
     <title>Document</title>
   <script defer src="../scripts/main.js"></script><link href="../styles/main.css" rel="stylesheet"></head>
   <body> 
-    <h1>О нас asds</h1>
+<header class="header"> 
+  <div class="header__wrapper">
+    <div class="header__logo"><a href="#"> 
+        <svg class="icon__logo" width="40" height="40">
+          <use xlink:href="../sprite.svg#logo"></use>
+        </svg></a></div>
+    <nav class="header__nav">
+      <ul> 
+        <li><a href="#">Все сервисы</a></li>
+        <li><a href="#">Новости</a></li>
+        <li><a href="#">База знаний</a></li>
+        <li> 
+          <button>Помощь и техподдержка
+            <svg class="header__wrapper-svg" width="11" height="7">
+              <use xlink:href="../sprite.svg#arrow"> </use>
+            </svg>
+          </button>
+        </li>
+        <li><a class="active" href="#">Меры поддержки</a></li>
+        <li><a href="#">Поиск по ГИСП</a></li>
+      </ul>
+    </nav>
+    <div class="header__user">
+      <div class="header__user-img"><img src="../images/avatar.png" alt="Иконка пользователя" width="32" height="32"></div>
+      <button type="button"> 
+        <svg class="header__wrapper-svg" width="13" height="8">
+          <use xlink:href="../sprite.svg#arrow"> </use>
+        </svg>
+      </button>
+    </div>
+  </div>
+</header>
   </body>
 </html>

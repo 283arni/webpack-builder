@@ -1,0 +1,28 @@
+- var nav = ["Все сервисы", "Новости", "База знаний", "Помощь и техподдержка", "Меры поддержки", "Поиск по ГИСП",]
+
+header.header 
+    .header__wrapper
+        .header__logo
+            a(href="#") 
+                svg.icon__logo(width="40", height="40")
+                    use(xlink:href="../sprite.svg#logo")
+        nav.header__nav
+            ul 
+                each item in nav
+                    if item === "Помощь и техподдержка"
+                        li 
+                            button= item 
+                                svg.header__wrapper-svg(width="11", height="7")
+                                    use(xlink:href="../sprite.svg#arrow")  
+                    else if item === "Меры поддержки"
+                        li
+                            a.active(href="#")= item 
+                    else
+                        li
+                            a(href="#")= item 
+        .header__user
+            .header__user-img
+                img(src="../images/avatar.png", alt="Иконка пользователя", width="32", height="32")
+            button(type="button") 
+                svg.header__wrapper-svg(width="13", height="8")
+                    use(xlink:href="../sprite.svg#arrow")  
